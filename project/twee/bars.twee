@@ -1,23 +1,25 @@
 /* From HiEnv bbar and tbar 
  * WITH MY MODIFICATIONS */
 
-:: PassageHeader
-<<if tags().includes("tbar")>>\
-<div id="topbar">\
-  <div class="bbblock">\
-    <div class="bbleft">\
-      USER #$userid\
-    </div>\
-    <div class="bbcenter">\
-      \ 
-    </div>\
-    <div class="bbright">\
-      <div class="credit-count">$credits€</div>\
-    </div>\
-  </div>\
-</div>\
-<</if>>\
-\
+:: PassageHeader [nobr]
+<<if tags().includes("tbar")>>
+<div id="topbar">
+  <div class="bbblock">
+    <div class="bbleft">
+      USER #$userid
+    </div>
+    <div class="bbcenter">
+       
+    </div>
+    <div class="bbright">
+      <span class="credit-count">
+        <span id="credvar">$credits</span>€
+      </span>
+    </div>
+  </div>
+</div>
+<</if>>
+
 <<script>>
 $(document).one(":passagedisplay", function (event) {
 	if ($("#topbar").length) {
@@ -26,7 +28,7 @@ $(document).one(":passagedisplay", function (event) {
 		$("#passages").css("margin-top", 0);
 	}
 });
-<</script>>\
+<</script>>
 
 :: PassageFooter
 <<if tags().includes("bbar")>>

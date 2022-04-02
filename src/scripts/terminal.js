@@ -1,6 +1,4 @@
 window.focusbox = function(boxvar) {
-  console.log("func");
-  console.log(boxvar);
   var v = document.getElementById("textbox-" + boxvar).value;
 
   if(v === "■") {
