@@ -3,6 +3,13 @@ Game User Experience Manager Simulator
 
 :: StoryInit
 <<cacheaudio "confirmation" "./assets/confirmation.wav">>
+/* UI STOW */
+<<ui stow>>
+
+/* USERID */
+<<if $userid === undefined>>
+  <<set $userid to random(10000000, 99999999)>>
+<</if>>
 
 :: Start
 <<ui stow>>\

@@ -1,4 +1,4 @@
-:: Terminal
+:: Terminal [bbar tbar]
 <<audio "confirmation" volume 0.8 play>> \
 <<type 35ms>>
 WELCOME GAME USER EXPERIENCE MANAGER.

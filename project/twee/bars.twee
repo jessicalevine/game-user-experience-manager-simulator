@@ -1,0 +1,21 @@
+/* From HiEnv bbar and tbar 
+ * WITH MY MODIFICATIONS */
+
+:: PassageHeader
+<<if tags().includes("tbar")>>\
+<div id="topbar"><div id="bbblock"><div id="bbtext">Put your top bar text here.</div></div></div><</if>>\
+\
+<<script>>
+$(document).one(":passagedisplay", function (event) {
+	if ($("#topbar").length) {
+		$("#passages").css("margin-top", $("#topbar").outerHeight() + 10);
+	} else {
+		$("#passages").css("margin-top", 0);
+	}
+});
+<</script>>\
+
+:: PassageFooter
+<<if tags().includes("bbar")>>
+
+<div id="bottombar"><div id="bbblock"><div id="bbtext">Put your bottom bar text here.</div></div></div><</if>>
