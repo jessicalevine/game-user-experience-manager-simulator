@@ -1,0 +1,12 @@
+:: Terminal
+<<audio "confirmation" volume 0.8 play>> \
+<<type 40ms>>
+WELCOME GAME USER EXPERIENCE MANAGER.
+PLEASE LOGIN.
+USERNAME: <<textbox "$username" "■">>
+<</type>>
+<<on "keydown">>
+  <<script>>
+    window.focusbox();
+  <</script>>
+<</on>>

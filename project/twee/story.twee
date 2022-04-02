@@ -1,11 +1,16 @@
 :: StoryTitle
 Game User Experience Manager Simulator
 
+:: StoryInit
+<<cacheaudio "confirmation" "./assets/confirmation.wav">>
+
 :: Start
 <<ui stow>>\
 @@.power-button;
-<html><i class="fa solid fa-power-off" aria-hidden="true"></i></html>\
-@@\
+<a data-passage="Terminal"> \
+<html><i class="fa solid fa-power-off" aria-hidden="true"></i></html> \
+</a> \
+@@ \
 @@.subtitle;
 PRESS TO BOOT
 @@
