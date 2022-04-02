@@ -1,0 +1,36 @@
+/* Dumb Terminal lib from HiEv
+ * See https://intfiction.org/t/hange-the-font-in-twine/53793
+ *
+ * WITH MY MODIFICATIONS */
+
+@import url("https://fonts.googleapis.com/css?family=VT323&display=swap");
+
+@font-face {
+  /* Font source: http://sensi.org/~svo/glasstty/ */
+  font-family: Glass;
+  src: url("Glass_TTY_VT220.eot");
+  src: url("Glass_TTY_VT220.eot?#iefix") format("embedded-opentype"),
+     url("Glass_TTY_VT220.woff2") format("woff2"),
+     url("Glass_TTY_VT220.woff") format("woff"),
+     url("Glass_TTY_VT220.svg#Glass_TTY_VT220") format("svg"),
+     url("Glass_TTY_VT220.ttf") format("truetype"),
+     url("file://C:/Games/MyGame/Glass_TTY_VT220.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+.passage {
+    color: #9effff;
+    text-shadow: 0px 0px 28px #00FFFF;
+  font-family: Glass, VT323, monospace;
+  font-size: 28px;
+  line-height: 30px;
+}
+.passage a, .passage a:hover, .passage a:active {
+    color: #9effff;
+    text-shadow: 0px 0px 28px #00FFFF;
+  text-decoration: underline;
+}
+
+input {
+  border: 0px;
+}
