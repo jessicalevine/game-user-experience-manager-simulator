@@ -1,0 +1,38 @@
+:: Login
+<<audio "confirmation" volume 0.8 play>> \
+<<type 35ms>>
+  WELCOME GAME USER EXPERIENCE MANAGER.
+  VERIFY YOUR MANAGMENT LEVEL BY
+  ENTERING YOUR CREDENTIALS NOW.
+  DO NOT FORGET TO REMEMBER YOUR CREDENTIALS.
+  USERNAME: \
+  <<textbox "$username" "■" "Password">>
+<</type>>
+<<on "keydown">><<focusbox "username">><</on>>
+
+:: Password
+<<type 35ms>>
+  PASSWORD: \
+  <<textbox "$password" "■" "Login Success">>
+<</type>>
+<<on "keydown">><<focusbox "password">><</on>>
+
+:: Login Success [tbar bbar]
+<<type 30ms>>
+  WELCOME USER #$userid. AS A GENEROUS REWARD
+  FOR CLOCKING IN FOR THE FIRST TIME TODAY,
+  YOU HAVE BEEN GRANTED A BONUS OF 100€ CREDITS.
+<</type>><<type 30ms start 650ms>>
+  THIS WILL PROVIDE YOU THE INITIAL CREDITS
+  NECCESSARY TO RENT SERVER TIME FOR YOUR
+  FIRST GAME USER EXPERIENCE MANAGEMENT TASK.
+<</type>><<type 30ms start 650ms>>
+  FROM THERE, IT WILL BE YOUR RESPONSIBILITY,
+  AS SPECIFIED IN YOUR EMPLOYMENT CONTRACT, TO
+  EARN ENOUGH CREDITS TO CONTINUE PERFORMING TASKS.
+<</type>><<type 30ms start 650ms>>
+  REMEMBER, ONLY U CAN PUT THE I IN TEAM
+<</type>><<type 30ms start 650ms>>
+  CONTINUE: <<textbox "$cont" "■" "Main Terminal">>
+<</type>>
+<<on "keydown">><<focusbox "cont">><</on>>

@@ -3,6 +3,7 @@ Game User Experience Manager Simulator
 
 :: StoryInit
 <<cacheaudio "confirmation" "./assets/confirmation.wav">>
+
 /* UI STOW */
 <<ui stow>>
 
