@@ -14,7 +14,7 @@ Game User Experience Manager Simulator
 :: Start
 <<ui stow>>\
 @@.power-button;
-<a data-passage="Terminal"> \
+<a data-passage="Login"> \
 <html><i class="fa solid fa-power-off" aria-hidden="true"></i></html> \
 </a> \
 @@ \

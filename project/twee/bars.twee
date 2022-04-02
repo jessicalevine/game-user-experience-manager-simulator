@@ -3,7 +3,20 @@
 
 :: PassageHeader
 <<if tags().includes("tbar")>>\
-<div id="topbar"><div id="bbblock"><div id="bbtext">Put your top bar text here.</div></div></div><</if>>\
+<div id="topbar">\
+  <div class="bbblock">\
+    <div class="bbleft">\
+      Text #1
+    </div>\
+    <div class="bbcenter">\
+      
+    </div>\
+    <div class="bbright">\
+      USER #$userid 
+    </div>\
+  </div>\
+</div>\
+<</if>>\
 \
 <<script>>
 $(document).one(":passagedisplay", function (event) {
@@ -18,4 +31,4 @@ $(document).one(":passagedisplay", function (event) {
 :: PassageFooter
 <<if tags().includes("bbar")>>
 
-<div id="bottombar"><div id="bbblock"><div id="bbtext">Put your bottom bar text here.</div></div></div><</if>>
+<div id="bottombar"><div class="bbblock"><div class="bbtext">Put your bottom bar text here.</div></div></div><</if>>

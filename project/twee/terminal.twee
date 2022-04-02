@@ -1,11 +1,15 @@
-:: Terminal [bbar tbar]
+:: Login [bbar tbar]
 <<audio "confirmation" volume 0.8 play>> \
 <<type 35ms>>
-WELCOME GAME USER EXPERIENCE MANAGER.
-PLEASE ENTER YOUR LOGIN CREDENTIALS.
-REMEMBER, DO NOT FORGET YOUR PASSWORD.
-USERNAME: <<textbox "$username" "■">>
+  WELCOME GAME USER EXPERIENCE MANAGER.
+  VERIFY YOUR MANAGMENT LEVEL BY
+  ENTERING YOUR CREDENTIALS NOW.
+  DO NOT FORGET TO REMEMBER YOUR CREDENTIALS.
+  USERNAME: \
+  <<textbox "$username" "■" "Password">>
 <</type>>
+
+/* FOCUS */
 <<on "keydown">>
   <<script>>
     window.focusbox();
