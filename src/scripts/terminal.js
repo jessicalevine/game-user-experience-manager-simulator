@@ -10,7 +10,6 @@ window.focusbox = function(boxvar) {
 
 Macro.add('focusbox', {
   handler: function() {
-    console.log(this);
     window.focusbox(this.args[0]);
   }
 });

@@ -9,7 +9,7 @@
       USER #$userid
     </div>
     <div class="bbcenter">
-       
+
     </div>
     <div class="bbright">
       <span class="credit-count">
@@ -30,7 +30,16 @@ $(document).one(":passagedisplay", function (event) {
 });
 <</script>>
 
-:: PassageFooter
+:: PassageFooter [nobr]
 <<if tags().includes("bbar")>>
 
-<div id="bottombar"><div class="bbblock"><div class="bbtext">Put your bottom bar text here.</div></div></div><</if>>
+<div id="bottombar">
+  <div class="bbblock">
+    <div class="bbtext">
+      COMMAND:
+      <<textbox "$command" "■">>
+    </div>
+  </div>
+</div>
+<<on "keydown">><<focusbox "command">><</on>>
+<</if>>

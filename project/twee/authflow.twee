@@ -51,7 +51,7 @@
 <div id="contbox"></div>
 <<type 15ms start 525ms>> \
   <<script>> document.getElementById("contbox").scrollIntoView(); <</script>> \
-  CONTINUE: <<textbox "$cont" "■" "Main Terminal">>
+  CONTINUE: <<textbox "$cont" "■" "User Screen">>
 <</type>>\
 </div>\
 <<on "keydown">><<focusbox "cont">><</on>>\

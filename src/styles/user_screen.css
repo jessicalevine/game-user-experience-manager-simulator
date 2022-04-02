@@ -1,0 +1,18 @@
+svg {
+  width: 20px;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.button-container {
+  display: flex;
+}
+
+.fake-button {
+  font-size: 22px;
+  padding: 5px;
+  margin: 5px 20px 5px 0px;
+  border: 2px solid #9EFFFF;
+  box-shadow: 0 0 4px 3px #00FFFF;
+}
