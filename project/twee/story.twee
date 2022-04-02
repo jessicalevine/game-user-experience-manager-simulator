@@ -12,6 +12,15 @@ Game User Experience Manager Simulator
   <<set $userid to random(10000000, 99999999)>>
 <</if>>
 
+<<if $credits === undefined>>
+  <<set $credits to 0>>
+<</if>>
+
+:: Widgets [widget nobr]
+<<widget "confsound">>
+  <<audio "confirmation" volume 0.8 play>>
+<</widget>>
+
 :: Start
 <<ui stow>>\
 @@.power-button;

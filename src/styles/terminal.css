@@ -28,8 +28,18 @@
 .passage {
   text-shadow: 0px 0px 28px #00FFFF;
 }
+
 .passage a, .passage a:hover, .passage a:active {
   color: #9effff;
   text-shadow: 0px 0px 28px #00FFFF;
   text-decoration: underline;
+}
+
+.terminal {
+  overflow: auto;
+}
+
+.credit-count {
+  color: #FFFD82;
+  text-shadow: 0px 0px 28px #FFFF00;
 }

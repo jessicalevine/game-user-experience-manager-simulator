@@ -6,13 +6,13 @@
 <div id="topbar">\
   <div class="bbblock">\
     <div class="bbleft">\
-      Text #1
+      USER #$userid\
     </div>\
     <div class="bbcenter">\
-      
+      \ 
     </div>\
     <div class="bbright">\
-      USER #$userid 
+      <div class="credit-count">$credits€</div>\
     </div>\
   </div>\
 </div>\

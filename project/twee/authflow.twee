@@ -1,6 +1,6 @@
 :: Login
-<<audio "confirmation" volume 0.8 play>> \
-<<type 35ms>>
+<<confsound>>\
+<<type 25ms>>
   WELCOME GAME USER EXPERIENCE MANAGER.
   VERIFY YOUR MANAGMENT LEVEL BY
   ENTERING YOUR CREDENTIALS NOW.
@@ -11,28 +11,40 @@
 <<on "keydown">><<focusbox "username">><</on>>
 
 :: Password
-<<type 35ms>>
+<<confsound>>\
+<<type 25ms>>
   PASSWORD: \
   <<textbox "$password" "■" "Login Success">>
 <</type>>
 <<on "keydown">><<focusbox "password">><</on>>
 
 :: Login Success [tbar bbar]
-<<type 30ms>>
+<<confsound>>\
+<div class="terminal">\
+<<type 15ms>>
   WELCOME USER #$userid. AS A GENEROUS REWARD
   FOR CLOCKING IN FOR THE FIRST TIME TODAY,
   YOU HAVE BEEN GRANTED A BONUS OF 100€ CREDITS.
-<</type>><<type 30ms start 650ms>>
+<</type>><<type 15ms start 525ms>>
   THIS WILL PROVIDE YOU THE INITIAL CREDITS
   NECCESSARY TO RENT SERVER TIME FOR YOUR
   FIRST GAME USER EXPERIENCE MANAGEMENT TASK.
-<</type>><<type 30ms start 650ms>>
+<</type>><<type 15ms start 525ms>>
   FROM THERE, IT WILL BE YOUR RESPONSIBILITY,
   AS SPECIFIED IN YOUR EMPLOYMENT CONTRACT, TO
   EARN ENOUGH CREDITS TO CONTINUE PERFORMING TASKS.
-<</type>><<type 30ms start 650ms>>
+<</type>> \
+ \
+<div id="inteam"></div>
+<<type 15ms start 525ms>> \
+  <<script>> document.getElementById("inteam").scrollIntoView(); <</script>> \
   REMEMBER, ONLY U CAN PUT THE I IN TEAM
-<</type>><<type 30ms start 650ms>>
+<</type>> \
+ \
+<div id="contbox"></div>
+<<type 15ms start 525ms>> \
+  <<script>> document.getElementById("contbox").scrollIntoView(); <</script>> \
   CONTINUE: <<textbox "$cont" "■" "Main Terminal">>
-<</type>>
-<<on "keydown">><<focusbox "cont">><</on>>
+<</type>>\
+</div>\
+<<on "keydown">><<focusbox "cont">><</on>>\
