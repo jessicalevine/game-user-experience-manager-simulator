@@ -1,0 +1,42 @@
+
+body {
+  font-size: 150%;
+  padding: 3rem;
+}
+
+pre {
+  background: #000;
+  color: white;
+  font-family: monospace;
+  padding: 1ch;
+}
+
+pre.caret-bar > span {
+  animation: blink 1s step-end infinite;
+  border-left: 2px solid white;
+}
+
+pre.caret-block > span {
+  animation: blink 1s step-end infinite;
+  background-color: #FFF;
+  color: #000;
+}
+
+pre.caret-underscore > span {
+  animation: blink 1s step-end infinite;
+  border-bottom: 2px solid white;
+}
+
+@keyframes blink {
+  from,
+  to {
+      background-color: #FFF;
+      color: #000;
+  }
+  50% {
+     background-color: #000;
+      color: #FFF;
+  }
+}
+<pre class="caret-block">$ npm run build <span> </span>
+</pre>

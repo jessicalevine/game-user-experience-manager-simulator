@@ -18,14 +18,18 @@
   font-weight: normal;
   font-style: normal;
 }
-.passage {
-    color: #9effff;
-    text-shadow: 0px 0px 28px #00FFFF;
+
+.passage, input {
+  color: #9effff;
   font-family: Glass, VT323, monospace;
   font-size: 28px;
 }
+
+.passage {
+  text-shadow: 0px 0px 28px #00FFFF;
+}
 .passage a, .passage a:hover, .passage a:active {
-    color: #9effff;
-    text-shadow: 0px 0px 28px #00FFFF;
+  color: #9effff;
+  text-shadow: 0px 0px 28px #00FFFF;
   text-decoration: underline;
 }

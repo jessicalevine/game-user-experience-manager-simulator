@@ -1,8 +1,9 @@
 :: Terminal
 <<audio "confirmation" volume 0.8 play>> \
-<<type 40ms>>
+<<type 35ms>>
 WELCOME GAME USER EXPERIENCE MANAGER.
-PLEASE LOGIN.
+PLEASE ENTER YOUR LOGIN CREDENTIALS.
+REMEMBER, DO NOT FORGET YOUR PASSWORD.
 USERNAME: <<textbox "$username" "■">>
 <</type>>
 <<on "keydown">>
