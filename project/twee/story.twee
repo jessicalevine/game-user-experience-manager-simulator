@@ -1,5 +1,11 @@
 :: StoryTitle
-Tweego Basic Setup
+Game User Experience Manager Simulator
 
 :: Start
-@@#hello;Hello World!@@
+<<ui stow>>\
+@@.power-button;
+<html><i class="fa solid fa-power-off" aria-hidden="true"></i></html>\
+@@\
+@@.subtitle;
+PRESS TO BOOT
+@@
