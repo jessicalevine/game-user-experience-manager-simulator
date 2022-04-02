@@ -1,12 +1,12 @@
 {
 
     "javascript": {
-        "minify": true,
+        "minify": false,
         "transpile": true
     },
 
     "css": {
-        "minify": true,
+        "minify": false,
         "autoprefix": true
     },
 
