@@ -42,11 +42,17 @@ $(document).one(":passagedisplay", function (event) {
 <<if tags().includes("bbar")>>
 
 <div id="bottombar">
-  <div class="bbblock">
-    <div class="bbtext">
+  <div class="bbblock bbar">
+    <div id="commandbox" class="bbtext">
       COMMAND:
       <<textboxPlus "" "$command" `{ placeholder: "■", onreturn: "<<run window.guemCommand($command)>>" }`>>
     </div>
+      <div id="guidebox" class="bbtext">
+        KNOWN COMMANDS:
+        <<for _i to 0; _i lt $knowncmds.length; _i++>>
+          < $knowncmds[_i] >
+        <</for>>
+      </div>
   </div>
 </div>
 <<on "keydown">><<focusbox "command">><</on>>

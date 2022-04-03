@@ -42,6 +42,12 @@
     transition: margin .2s ease-in;
 }
 
+.bbar {
+  flex-wrap: wrap;
+  max-height: 3em;
+  line-height: 1em;
+}
+
 .bbchild {
   padding-left: 1em;
   padding-right: 1em;
@@ -58,6 +64,10 @@
 
 .bbright {
   text-align: right;
+}
+
+#commandbox {
+  flex: 1 0 100%;
 }
 
 #ui-bar.stowed~#story .bbblock {

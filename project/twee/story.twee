@@ -27,6 +27,11 @@ Game User Experience Manager Simulator
   <<set $curgame to window.newGame() >> \
 <</if>> \
 
+/* KNOWN COMMANDS */
+<<if $knowncmds === undefined>> \
+  <<set $knowncmds to [] >> \
+<</if>> \
+
 /* TESTING CREDITS  */
 /* Give me starting credits if we start somewhere later which */
 /* never happens to end users */

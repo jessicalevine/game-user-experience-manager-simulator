@@ -67,6 +67,7 @@
 
 :: Tutorial 1 Topic Users [tbar]
 <div class="terminal"> \
+<<set $knowncmds.push("DELETE [NUMBER]")>>
 <<type $shorttypespeed>> \
   PLEASE NOTE THAT ANY FORM OF LINGUISTIC COMMUNICATION WITH THE USER IS STRICTLY FORBIDDEN.
 <</type>><<type $shorttypespeed start 525ms>>

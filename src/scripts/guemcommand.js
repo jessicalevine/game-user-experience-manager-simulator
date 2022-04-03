@@ -4,6 +4,9 @@ window.guemCommand = function(cmd_str) {
     return;
   }
 
+  cmd_str = cmd_str.replace('[', '');
+  cmd_str = cmd_str.replace(']', '');
+
   // Clear command
   document.getElementById("textbox-command").value = null;
 
