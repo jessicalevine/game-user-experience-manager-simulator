@@ -11,10 +11,15 @@
   font-style: normal;
 }
 
+.nbspfont {
+  font-family: monospace;
+}
+
 .passage, input {
   color: #4effff;
   font-family: Glass, monospace;
   font-size: 36px;
+  line-height: 1.25;
 }
 
 .passage {

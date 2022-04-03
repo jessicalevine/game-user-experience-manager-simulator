@@ -6,7 +6,7 @@
 <div id="topbar">
   <div class="bbblock">
     <div class="bbchild bbleft">
-      USER&nbsp;#$userid
+      USER<span class="nbspfont">&nbsp;</span>#$userid
     </div>
     <div id="messagebox" class="bbchild bbcenter">
       <<if tags().includes("tasked")>>
@@ -15,7 +15,7 @@
     </div>
     <div class="bbchild bbright">
       <span class="credit-count">
-        <span id="credvar">$credits</span>€
+        $$<span id="credvar">$credits</span>
       </span>
     </div>
   </div>

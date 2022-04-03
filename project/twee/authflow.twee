@@ -23,15 +23,15 @@
 <div class="terminal">\
 <<script>>
   $(document).on(':typingstop', function (ev) {
-    if(ev.target.textContent.includes("100€")) {
-      add_credits(100);
+    if(ev.target.textContent.includes("$20")) {
+      add_credits(20);
     }
   });
 <</script>> \
 <<type 15ms>>
   WELCOME USER #$userid. AS A GENEROUS REWARD
   FOR CLOCKING IN FOR THE FIRST TIME TODAY,
-  YOU HAVE BEEN GRANTED A BONUS OF 100€ CREDITS.
+  YOU HAVE BEEN GRANTED A BONUS OF $$20 CREDITS.
 <</type>><<type 15ms start 3500ms>>
   THIS WILL PROVIDE YOU THE INITIAL CREDITS
   NECCESSARY TO RENT SERVER TIME FOR YOUR

@@ -1,25 +1,25 @@
 window.add_credits = function(credits) {
-  var audio = new Audio('./assets/creditadd.wav');
-  var intervalid = setInterval(function() {
+  let audio = new Audio('./assets/creditadd.wav');
+  let intervalid = setInterval(function() {
     audio.pause();
     audio = new Audio('./assets/creditadd.wav');
     audio.volume = 0.3;
     audio.play();
   }, 165);
 
+  let new_credits = State.variables.credits + credits;
+
   const countUp = new window.CountUp(
     'credvar',
-    credits,
+    new_credits,
     { startVal: State.variables.credits }
   );
+
+  State.variables.credits = new_credits;
 
   if (!countUp.error) {
     countUp.start(function () { clearInterval(intervalid)});
   } else {
     console.error(countUp.error);
   }
-}
-
-window.update_credits = function(credits) {
-  document.getElementById("credvar").textContent = State.variables.credits;
 }
