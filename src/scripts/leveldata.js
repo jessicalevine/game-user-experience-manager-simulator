@@ -10,10 +10,14 @@ window.zorkalike = {
   },
   K: {
     name: "KITCHEN",
-    text: "ENTERING: KITCHEN. ON THE TABLE IS A JAR OF NUTRIGRAND™ BRAND SOY-BASED CAFFEINATED COFFEE BEAN EQUIVALENT. A STAIRCASE LEADS UP YOU CAN SEE A FAINT LIGHT IN THE LIVING ROOM DUE WEST.",
+    text: "ENTERING: KITCHEN. A STAIRCASE LEADS UP YOU CAN SEE A FAINT LIGHT IN THE LIVING ROOM DUE WEST.",
     adjacent: ["S", "L"],
-    item: {
-      "coffee": "NUTRIGRAND™ COFFEE"
+    items: {
+      coffee: {
+        inv_key: "coffee",
+        display_name: "NUTRIGRAND™ COFFEE",
+        desc: "ON THE TABLE IS A JAR OF NUTRIGRAND™ BRAND SOY-BASED CAFFEINATED COFFEE BEAN EQUIVALENT."
+      }
     }
   },
   S: {
@@ -23,10 +27,14 @@ window.zorkalike = {
   },
   L: {
     name: "LIVING ROOM",
-    text: "ENTERING: LIVING ROOM. THERE IS A FRTFY™ BRAND HOME DEFENSE TURBOSWORD ABOVE THE FIREPLACE. THE KITCHEN CAN BE SEEN TO THE EAST.",
+    text: "ENTERING: LIVING ROOM. THE KITCHEN CAN BE SEEN TO THE EAST.",
     adjacent: ["S"],
-    item: {
-      "sword": "FRTFY™ TURBOSWORD"
+    items: {
+      sword: {
+        inv_key: "sword",
+        display_name: "FRTFY™ TURBOSWORD",
+        desc: "THERE IS A FRTFY™ BRAND HOME DEFENSE TURBOSWORD ABOVE THE FIREPLACE."
+      }
     }
   }
 }

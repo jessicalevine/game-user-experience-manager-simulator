@@ -114,21 +114,16 @@ REMEMBER: THE COST OF SERVER TIME IS YOUR RESPONSIBILITY AS AN INDEPENDENT CONTR
     <div class="quest-failure"><<print $curgame.quest().failtext>></div>
     <<set $curgame.status to "FAILED">> \
     <div class="button-container"> \
-      <<set $activebuttons to {}>> \
-      <<set _buttonid to "reserved-1">> \
-      <<set $activebuttons[_buttonid] to null>> \
-      <div class="fake-button" @id=_buttonid>1: CONTINUE</div> \
+      <div class="fake-button" id="reserved-1">1: CONTINUE</div> \
     </div>
   <<else>> \
     <div class="button-container"> \
-      <<set $activebuttons to {}>> \
-      <<for _i to 0; _i lt $loc.adjacent.length; _i++>> \
-        <<set _adj to window.zorkalike[$loc.adjacent[_i]]>> \
-        <<set _visualnum to _i + 1>> \
-        <<set _buttonid to "reserved-" + _visualnum>> \
-        /* activebuttons is hash of DOM ID => Adjacent Map Tile */ \
-        <<set $activebuttons[_buttonid] = _adj>> \
-        <div class="fake-button" @id=_buttonid>_visualnum: _adj.name</div> \
+      <<set _buttons to window.buttonsForGameLoc($loc)>> \
+      <<for _i to 0; _i lt _buttons.length; _i++>> \
+        <<set _bn to _buttons[_i]>>
+        <div class="fake-button" @id=_bn.dom_id @data-action-type=_bn.action_type @data-leveldata-key=_bn.leveldata_key> \
+          _bn.display_text \
+        </div> \
       <</for>> \
     </div> \
   <</if>> \
@@ -148,13 +143,22 @@ REMEMBER: THE COST OF SERVER TIME IS YOUR RESPONSIBILITY AS AN INDEPENDENT CONTR
     }
 
     /* Choose random button ID to "mouse" over */
-    let buttonids = Object.keys(State.variables.activebuttons);
+    let buttonids = window.getActiveFakeButtonIds();
 
     /* Move cursor and "click" when done */
-    window.moveFakeMouseToRandElement(buttonids, function(clicked_elem_id) {
+    window.moveFakeMouseToRandElement(buttonids, function(clicked_elem) {
         curgame.turn++;
-        State.variables.loc = State.variables.activebuttons[clicked_elem_id];
-        if(curgame.status === "ACTIVE") {
+
+        if (clicked_elem.dataset.actionType === "travel") {
+          State.variables.loc = window.zorkalike[clicked_elem.dataset.leveldataKey];
+        } else if (clicked_elem.dataset.actionType === "pickup") {
+          /* Stays in same loc */
+          curgame.inventory.push(State.variables.loc.items[clicked_elem.dataset.leveldataKey]);
+        } else {
+          console.error("Unrecognized action type");
+        }
+
+        if (curgame.status === "ACTIVE") {
           Engine.play("User Screen");
 
         } else if(curgame.status === "FAILED") {

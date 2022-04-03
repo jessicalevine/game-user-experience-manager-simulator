@@ -77,7 +77,7 @@ window.moveFakeMouseToRandElement = function (elem_ids, oncomplete) {
 
     if (elapsed >= tween.duration) {
       if (oncomplete) {
-        oncomplete(elem.id);
+        oncomplete(elem);
       }
     } else {
       requestAnimationFrame(render);
