@@ -42,10 +42,10 @@ Game User Experience Manager Simulator
 <</script>>
 
 /* SPEED FOR TESTING */
-/* <<set $longtypespeed to "30ms">> */
-/* <<set $shorttypespeed to "10ms">> */
-<<set $longtypespeed to "5ms">>
-<<set $shorttypespeed to "1ms">>
+<<set $longtypespeed to "30ms">>
+<<set $shorttypespeed to "10ms">>
+/* <<set $longtypespeed to "5ms">> */
+/* <<set $shorttypespeed to "1ms">> */
 
 :: Widgets [widget nobr]
 <<widget "confsound">>
