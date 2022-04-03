@@ -3,6 +3,10 @@ window.guemCommand = function(cmd_str) {
     console.error("No command entered.");
     return;
   }
+
+  // Clear command
+  document.getElementById("textbox-command").value = null;
+
   let cmd_arr = cmd_str.toLowerCase().split(" ")
   let cmd = cmd_arr[0]
   
