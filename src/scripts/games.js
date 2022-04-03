@@ -24,14 +24,10 @@ window.generateActiveGames = function(count = 1) {
 window.newGame = function() {
   let game = {
     user: getRandomInt(100000, 999999),
-    quest_name: "zorkalike",
+    quest: window.zorkalike(),
     status: "ACTIVE",
     turn: getRandomInt(0, 5),
     inventory: []
-  }
-
-  game.quest = function() {
-    return window[game.quest_name];
   }
 
   return game;
@@ -43,7 +39,7 @@ window.buttonsForGameLoc = function(loc) {
 
   for(let i = 0; i < loc.adjacent.length; i++) {
     // Based on names of adjacent tiles, get tile data
-    let adj_tile = window.zorkalike[loc.adjacent[i]];
+    let adj_tile = State.variables.curgame.quest[loc.adjacent[i]];
 
     buttons.push({
       dom_id: "reserved-" + dom_id_num,

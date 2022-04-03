@@ -104,21 +104,22 @@ REMEMBER: THE COST OF SERVER TIME IS YOUR RESPONSIBILITY AS AN INDEPENDENT CONTR
   <<if !($gameuser === undefined)>> \
     <<set $curgame to $games[$gameuser]>> \
   <</if>> \
-  <<if $loc === undefined || $loc === null>> \
-    <<set $loc to $curgame.quest()[$curgame.quest().start] >> \
+  <<if $curgame.loc === undefined || $curgame.loc === null>> \
+    <<run console.log("Going to start loc")>>
+    <<set $curgame.loc to $curgame.quest[$curgame.quest.start] >> \
   <</if>> \
 <<type 10ms>>
-  $loc.text
+  $curgame.loc.text
 
-  <<if $loc.fail>> \
-    <div class="quest-failure"><<print $curgame.quest().failtext>></div>
+  <<if $curgame.loc.fail>> \
+    <div class="quest-failure"><<print $curgame.quest.failtext>></div>
     <<set $curgame.status to "FAILED">> \
     <div class="button-container"> \
       <div class="fake-button" id="reserved-1">1: CONTINUE</div> \
     </div>
   <<else>> \
     <div class="button-container"> \
-      <<set _buttons to window.buttonsForGameLoc($loc)>> \
+      <<set _buttons to window.buttonsForGameLoc($curgame.loc)>> \
       <<for _i to 0; _i lt _buttons.length; _i++>> \
         <<set _bn to _buttons[_i]>>
         <div class="fake-button" @id=_bn.dom_id @data-action-type=_bn.action_type @data-leveldata-key=_bn.leveldata_key> \
@@ -132,13 +133,12 @@ REMEMBER: THE COST OF SERVER TIME IS YOUR RESPONSIBILITY AS AN INDEPENDENT CONTR
 
 <<script>>
   $(document).one(':typingcomplete', function (ev) {
-    let curgame = State.variables.curgame;
-    if (curgame == undefined || curgame == null) {
+    if (State.variables.curgame == undefined || State.variables.curgame == null) {
       console.log("No active game");
       return;
     }
 
-    if(curgame.status === "FAILED") {
+    if(State.variables.curgame.status === "FAILED") {
       window.removeCredits(10);
     }
 
@@ -147,22 +147,24 @@ REMEMBER: THE COST OF SERVER TIME IS YOUR RESPONSIBILITY AS AN INDEPENDENT CONTR
 
     /* Move cursor and "click" when done */
     window.moveFakeMouseToRandElement(buttonids, function(clicked_elem) {
-        curgame.turn++;
+        State.variables.curgame.turn++;
 
         if (clicked_elem.dataset.actionType === "travel") {
-          State.variables.loc = window.zorkalike[clicked_elem.dataset.leveldataKey];
+          State.variables.curgame.loc = State.variables.curgame.quest[clicked_elem.dataset.leveldataKey];
         } else if (clicked_elem.dataset.actionType === "pickup") {
           /* Stays in same loc */
-          curgame.inventory.push(State.variables.loc.items[clicked_elem.dataset.leveldataKey]);
+          let item_key = clicked_elem.dataset.leveldataKey;
+          delete State.variables.curgame.loc.items[item_key];
+          State.variables.curgame.inventory.push(State.variables.curgame.loc.items[item_key]);
         } else {
           console.error("Unrecognized action type");
         }
 
-        if (curgame.status === "ACTIVE") {
+        if (State.variables.curgame.status === "ACTIVE") {
           Engine.play("User Screen");
 
-        } else if(curgame.status === "FAILED") {
-          curgame == null;
+        } else if(State.variables.curgame.status === "FAILED") {
+          State.variables.curgame == null;
           Engine.play("User List");
         }
     });

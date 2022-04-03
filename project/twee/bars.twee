@@ -10,7 +10,7 @@
     </div>
     <div id="messagebox" class="bbchild bbcenter">
       <<if tags().includes("tasked")>>
-        TASK: <<print $curgame.quest().task>>
+        TASK: <<print $curgame.quest.task>>
       <</if>>
     </div>
     <div class="bbchild bbright">
@@ -45,7 +45,7 @@ $(document).one(":passagedisplay", function (event) {
   <div class="bbblock bbar">
     <div id="commandbox" class="bbtext">
       COMMAND:
-      <<textboxPlus "" "$command" `{ placeholder: "■", onreturn: "<<run window.guemCommand($command)>>" }`>>
+      <<textboxPlus "" "$command" `{ placeholder: "EXAMPLE: DELETE 5", onreturn: "<<run window.guemCommand($command)>>" }`>>
     </div>
       <div id="guidebox" class="bbtext">
         KNOWN COMMANDS:
