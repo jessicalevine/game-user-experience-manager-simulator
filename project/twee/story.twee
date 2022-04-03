@@ -43,7 +43,7 @@ Game User Experience Manager Simulator
 
 /* SPEED FOR TESTING */
 <<set $longtypespeed to "30ms">>
-<<set $shorttypespeed to "10ms">>
+<<set $shorttypespeed to "15ms">>
 /* <<set $longtypespeed to "5ms">> */
 /* <<set $shorttypespeed to "1ms">> */
 
