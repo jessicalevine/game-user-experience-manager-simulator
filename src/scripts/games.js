@@ -73,3 +73,13 @@ window.getActiveFakeButtonIds = function() {
   document.querySelectorAll("div.fake-button").forEach(function(button) { ids.push(button.id) });
   return ids;
 }
+
+window.getTextForLoc = function(loc) {
+  let text = loc.text;
+  let items = loc.items || {};
+  let item_keys = Object.keys(items);
+  item_keys.forEach(function(key) {
+    text = text + " " + items[key].desc;
+  });
+  return text;
+}

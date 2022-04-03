@@ -109,7 +109,7 @@ REMEMBER: THE COST OF SERVER TIME IS YOUR RESPONSIBILITY AS AN INDEPENDENT CONTR
     <<set $curgame.loc to $curgame.quest[$curgame.quest.start] >> \
   <</if>> \
 <<type 10ms>>
-  $curgame.loc.text
+  <<= window.getTextForLoc($curgame.loc)>>
 
   <<if $curgame.loc.fail>> \
     <div class="quest-failure"><<print $curgame.quest.failtext>></div>
