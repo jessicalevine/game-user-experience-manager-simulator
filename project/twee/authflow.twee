@@ -54,4 +54,7 @@
   CONTINUE: <<textbox "$cont" "■" "User Screen">>
 <</type>>\
 </div>\
+
+/* IMPORTANT WHITESPACE TO FORCE SCROLL */
+
 <<on "keydown">><<focusbox "cont">><</on>>\

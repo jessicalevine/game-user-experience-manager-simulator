@@ -1,12 +1,14 @@
 :: Main Terminal [tbar bbar]
 USER LIST
 
-:: User Screen [tbar bbar]
+:: User Screen [tbar bbar tasked]
+<<set $task to "TASK: DO">> \
 <<confsound>> \
-<svg id="fakemouse" transform="translate(50px,200px)" viewBox="11.8 9 16 22"><path d="M20,21l4.5,8l-3.4,2l-4.6-8.1L12,29V9l16,12H20z" fill="white" stroke="white"></path></svg> \
+<svg id="fakemouse" viewBox="11.8 9 16 22"><path d="M20,21l4.5,8l-3.4,2l-4.6-8.1L12,29V9l16,12H20z" fill="white" stroke="white"></path></svg> \
+<div class="terminal"> \
 <<type 30ms>>
   <<if $loc === undefined>> \
-    <<set $loc to window.zorkalike[window.zorkalike.start] >> \
+    <<set $loc to window[$quest][window[$quest].start] >> \
   <</if>> \
   $loc.text
 
@@ -20,6 +22,7 @@ USER LIST
     <</for>> \
   </div>
 <</type>>
+</div>
 
 <<script>>
   $(document).on(':typingcomplete', function (ev) {

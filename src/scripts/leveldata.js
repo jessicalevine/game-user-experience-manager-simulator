@@ -3,6 +3,7 @@ window.makeAdjacencyButtonId = function() {
 }
 window.zorkalike = {
   start: "K",
+  task: "HELP USER FIND PARCHSMART™ PARCHMENT",
   A: {
     name: "ATTIC",
     text: "YOU ENTER THE ATTIC. <br> OH NO! YOU'VE WALKED INTO THE SLAVERING <br> FANGS OF A LURKING TURBOGRUE! <br> *** YOU HAVE DIED ***",

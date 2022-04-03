@@ -12,9 +12,15 @@ Game User Experience Manager Simulator
   <<set $userid to random(10000000, 99999999)>>
 <</if>>
 
+/* CREDITS */
 <<if $credits === undefined>>
   <<set $credits to 0>>
 <</if>>
+
+/* QUEST */
+<<if $quest === undefined>> \
+  <<set $quest to "zorkalike" >> \
+<</if>> \
 
 :: Widgets [widget nobr]
 <<widget "confsound">>

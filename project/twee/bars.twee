@@ -5,13 +5,15 @@
 <<if tags().includes("tbar")>>
 <div id="topbar">
   <div class="bbblock">
-    <div class="bbleft">
-      USER #$userid
+    <div class="bbchild bbleft">
+      USER&nbsp;#$userid
     </div>
-    <div class="bbcenter">
-
+    <div id="messagebox" class="bbchild bbcenter">
+      <<if tags().includes("tasked")>>
+        TASK: <<print window[$quest].task>>
+      <</if>>
     </div>
-    <div class="bbright">
+    <div class="bbchild bbright">
       <span class="credit-count">
         <span id="credvar">$credits</span>€
       </span>
