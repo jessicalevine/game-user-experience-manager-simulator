@@ -30,6 +30,11 @@ window.guemCommand = function(cmd_str) {
       console.error("Delete target does not exist.");
       return;
     }
+
     target.remove();
+
+    let audio = new Audio('./assets/deletecmd.wav');
+    audio.volume = 0.5;
+    audio.play();
   }
 }
