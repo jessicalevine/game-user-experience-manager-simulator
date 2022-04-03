@@ -6,6 +6,8 @@ window.guemCommand = function(cmd_str) {
 
   cmd_str = cmd_str.replace('[', '');
   cmd_str = cmd_str.replace(']', '');
+  cmd_str = cmd_str.replace('<', '');
+  cmd_str = cmd_str.replace('>', '');
 
   // Clear command
   document.getElementById("textbox-command").value = null;
