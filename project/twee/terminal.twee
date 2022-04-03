@@ -54,10 +54,41 @@
       };
       Engine.play("User List");
     } else {
-      Engine.play("User Screen");
+      let tut = State.variables.tutorial1complete;
+      if (tut === undefined || tut === null || tut === false) {
+        Engine.play("Tutorial 1 Topic Users")
+        State.variables.tutorial1complete = true;
+      } else {
+        Engine.play("User Screen");
+      }
     }
   });
 <</script>> \
+
+:: Tutorial 1 Topic Users [tbar]
+<div class="terminal"> \
+<<type $shorttypespeed>> \
+  PLEASE NOTE THAT ANY FORM OF LINGUISTIC COMMUNICATION WITH THE USER IS STRICTLY FORBIDDEN.
+<</type>><<type $shorttypespeed start 525ms>>
+  IT IS YOUR JOB TO GUIDE THE USER TOWARDS THE BEST POSSIBLE GAME EXPERIENCE. THIS IS BEST ACCOMPLISHED USING OUR PROPRIETY GAME USER EXPERIENCE IMPROVEMENT COMMANDS.
+<</type>><<type $shorttypespeed start 525ms>>
+  FOR EXAMPLE, IN THE FOLLOWING GAME, YOU MAY USE THE COMMAND "DELETE" FOLLOWED BY THE NUMBER OF AN ON SCREEN ELEMENT (SUCH AS "DELETE 1") TO REMOVE THAT CHOICE FROM THE USER.
+<</type>> \
+ \
+<div id="simplify"></div>
+<<type $shorttypespeed start 525ms>> \
+  <<script>> document.getElementById("simplify").scrollIntoView(); <</script>> \
+  THIS COMMAND WILL ALLOW YOU TO SIMPLIFY THE USER'S DECISION MAKING, INCREASING THEIR LIKLIEHOOD OF HAVING THE OPTIMAL EXPERIENCE. NO ONE LIKES TOO MUCH CHOICE.
+<</type>> \
+ \
+<div id="contbox"></div>
+<<type $shorttypespeed start 525ms>> \
+  <<script>> document.getElementById("contbox").scrollIntoView(); <</script>> \
+  CONTINUE: <<textbox "$cont" "■" "User Screen">>
+<</type>>\
+</div>
+
+<<on "keydown">><<focusbox "cont">><</on>> \
 
 :: User Screen [tbar bbar tasked]
 <<confsound>> \
