@@ -1,11 +1,12 @@
 :: User List [tbar]
 <<confsound>> \
+<<toast>> \
 <<run window.genUserListGames()>> \
 <div class="terminal"> \
-<<type 30ms>>
+<<type $longtypespeed>>
   SELECT A USER TO IMRPOVE THEIR GAME EXPERIENCE
 <</type>> \
-<<type 10ms>> \
+<<type $shorttypespeed>> \
 
   <div class="games-row"> \
     <div class="games-column games-header">USER NUMBER</div> \
@@ -23,15 +24,43 @@
   <</for>> \
 
 <</type>> \
-<<type 30ms>> \
-  ENTER USER NUMBER: #<<textbox "$gameuser" "■" "User Screen">>
+<<type $longtypespeed>> \
+  ENTER USER NUMBER: #<<textbox "$gameuser" "■" "User Filter">>
 <</type>> \
 </div>
 <<on "keydown">><<focusbox "gameuser">><</on>>
 
+:: User Filter
+/* Make sure there's a user before visiting their screen, else go to list */
+<<script>>
+  $(document).one(":passageend", function(ev) {
+    let gameuser = State.variables.gameuser;
+    if (gameuser === undefined || gameuser === null) {
+      console.log("returning to list: lack of gameuser");
+      Engine.play("User List");
+    }
+
+    let game = window.updateGameByUser(gameuser);
+    if (game === undefined || game === null) {
+      State.variables.toast = {
+        text: "NO SUCH USER FOUND. TRY AGAIN.",
+        ontype: function (ev) { window.removeCredits(1); }
+      };
+      Engine.play("User List");
+    } else if (game.status === "FAILED") {
+      State.variables.toast = {
+        text: "THAT IS A FAILED GAME. TRY AGAIN.",
+        ontype: function (ev) { window.removeCredits(1); }
+      };
+      Engine.play("User List");
+    } else {
+      Engine.play("User Screen");
+    }
+  });
+<</script>> \
+
 :: User Screen [tbar bbar tasked]
 <<confsound>> \
-<<run selectUser($gameuser)>> \
 <svg id="fakemouse" viewBox="11.8 9 16 22"><path d="M20,21l4.5,8l-3.4,2l-4.6-8.1L12,29V9l16,12H20z" fill="white" stroke="white"></path></svg> \
 <div class="terminal"> \
   <<if !($gameuser === undefined)>> \
@@ -91,7 +120,7 @@
           Engine.play("User Screen");
 
         } else if(curgame.status === "FAILED") {
-        curgame == null;
+          curgame == null;
           Engine.play("User List");
         }
     });

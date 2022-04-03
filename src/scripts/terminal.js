@@ -1,9 +1,11 @@
-window.selectUser = function(userId) {
+window.updateGameByUser = function(userId) {
   let game = State.variables.games[userId];
   if (game === undefined || game === null) {
     console.error("No such game for user: " + userId);
+    return null;
   } else {
     State.variables.curgame = game;
+    return game;
   }
 }
 

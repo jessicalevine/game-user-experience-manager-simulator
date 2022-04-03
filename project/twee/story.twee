@@ -47,6 +47,19 @@ Game User Experience Manager Simulator
   <<audio "confirmation" volume 0.8 play>>
 <</widget>>
 
+<<widget "toast">>
+  <<if !($toast === undefined || $toast === null)>> 
+    <<set _toast_ontype = $toast.ontype>> 
+    <<if !(_toast_ontype === undefined || _toast_ontype === null)>> 
+      <<run $(document).one(":typingstop", _toast_ontype)>> 
+    <</if>> 
+    <<type $longtypespeed>> 
+      $toast.text
+      <<set $toast to null>> 
+    <</type>> 
+  <</if>> 
+<</widget>>
+
 :: Start
 <<ui stow>>\
 @@.power-button;
