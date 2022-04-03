@@ -26,7 +26,7 @@ window.newGame = function() {
     user: getRandomInt(100000, 999999),
     quest_name: "zorkalike",
     status: "ACTIVE",
-    turn: 0
+    turn: getRandomInt(0, 5)
   }
 
   game.quest = function() {
