@@ -7,7 +7,7 @@ USER LIST
 <div class="terminal"> \
 <<type 30ms>>
   <<if $loc === undefined>> \
-    <<set $loc to window[$quest][window[$quest].start] >> \
+    <<set $loc to $curgame.quest()[$curgame.quest().start] >> \
   <</if>> \
   $loc.text
 
@@ -32,6 +32,7 @@ USER LIST
 
     /* Move cursor and "click" when done */
     window.moveFakeMouseToRandElement(buttonids, function(clicked_elem_id) {
+        State.variables.curgame.turns++;
         State.variables.loc = State.variables.activebuttons[clicked_elem_id];
         Engine.play("User Screen");
     });

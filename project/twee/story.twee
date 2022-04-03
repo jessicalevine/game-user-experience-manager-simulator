@@ -18,8 +18,8 @@ Game User Experience Manager Simulator
 <</if>>
 
 /* QUEST */
-<<if $quest === undefined>> \
-  <<set $quest to "zorkalike" >> \
+<<if $curgame === undefined>> \
+  <<set $curgame to window.newGame() >> \
 <</if>> \
 
 :: Widgets [widget nobr]

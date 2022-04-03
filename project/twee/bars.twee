@@ -10,7 +10,7 @@
     </div>
     <div id="messagebox" class="bbchild bbcenter">
       <<if tags().includes("tasked")>>
-        TASK: <<print window[$quest].task>>
+        TASK: <<print $curgame.quest().task>>
       <</if>>
     </div>
     <div class="bbchild bbright">
