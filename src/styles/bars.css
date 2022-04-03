@@ -35,8 +35,8 @@
   justify-content: space-between;
 	margin-top: 10px;
 	margin-bottom: 10px;
-	margin-left: 12em;
-	margin-right: 2.5em;
+	margin-left: 8em;
+	margin-right: 0.5em;
   max-height: 1.5em;
 	-o-transition: margin .2s ease-in;
     transition: margin .2s ease-in;
@@ -61,20 +61,20 @@
 }
 
 #ui-bar.stowed~#story .bbblock {
-	margin-left: 2.5em;
+	margin-left: 1.5em;
 }
 @media screen and (max-width: 1136px) {
 	.bbblock {
-		margin-left: 2.5em;
-		margin-right: 1.5em;
+		margin-left: 1.5em;
+		margin-right: 0.5em;
 	}
 	#ui-bar.stowed~#story .bbblock {
-		margin-left: 2.5em;
+		margin-left: 1.5em;
 	}
 }
 @media screen and (max-width: 768px) {
 	.bbblock {
-		margin-left: 2.5em;
+		margin-left: 1.5em;
 	}
 }
 /* Bottom Bar styling - End */
