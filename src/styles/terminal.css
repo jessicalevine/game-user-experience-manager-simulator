@@ -29,7 +29,7 @@
 .passage a, .passage a:hover, .passage a:active {
   color: #4effff;
   text-shadow: 0px 0px 36px #00FFFF;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .terminal {
