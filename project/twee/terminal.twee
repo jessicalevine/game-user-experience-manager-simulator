@@ -69,22 +69,30 @@
 </div>
 
 <<script>>
-  $(document).on(':typingcomplete', function (ev) {
+  $(document).one(':typingcomplete', function (ev) {
+    let curgame = State.variables.curgame;
+    if (curgame == undefined || curgame == null) {
+      console.log("No active game");
+      return;
+    }
+
+    if(curgame.status === "FAILED") {
+      window.removeCredits(10);
+    }
+
     /* Choose random button ID to "mouse" over */
     let buttonids = Object.keys(State.variables.activebuttons);
 
     /* Move cursor and "click" when done */
     window.moveFakeMouseToRandElement(buttonids, function(clicked_elem_id) {
-        let curgame = State.variables.curgame;
         curgame.turn++;
         State.variables.loc = State.variables.activebuttons[clicked_elem_id];
         if(curgame.status === "ACTIVE") {
           Engine.play("User Screen");
 
         } else if(curgame.status === "FAILED") {
-          window.removeCredits(10, function() {
-              Engine.play("User List");
-          });
+        curgame == null;
+          Engine.play("User List");
         }
     });
   });

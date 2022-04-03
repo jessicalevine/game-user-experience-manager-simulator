@@ -22,7 +22,7 @@
 <<confsound>>\
 <div class="terminal">\
 <<script>>
-  $(document).on(':typingstop', function (ev) {
+  $(document).one(':typingstop', function (ev) {
     if(ev.target.textContent.includes("$20")) {
       add_credits(20);
     }
