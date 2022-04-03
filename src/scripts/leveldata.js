@@ -1,6 +1,3 @@
-window.makeAdjacencyButtonId = function() {
-  return "button-" + guidGenerator();
-}
 window.zorkalike = {
   start: "K",
   task: "HELP USER FIND LOADLTR™ PARCHMENT",
