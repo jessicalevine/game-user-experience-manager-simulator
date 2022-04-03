@@ -12,6 +12,9 @@ window.guemCommand = function(cmd_str) {
 
   let cmd_arr = cmd_str.toLowerCase().split(" ")
   let cmd = cmd_arr[0]
+
+  // Commands cost server time
+  window.removeCredits(2);
   
   if(cmd === "delete") {
     if(cmd_arr.length < 2) {
