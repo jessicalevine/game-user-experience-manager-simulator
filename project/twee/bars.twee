@@ -14,9 +14,15 @@
       <</if>>
     </div>
     <div class="bbchild bbright">
-      <span id="credit-tbar" class="credit-count">
-        $$<span id="credvar">$credits</span>
-      </span>
+      <<if $credits > 0>>
+        <span id="credit-tbar" class="credit-count">
+          $$<span id="credvar">$credits</span>
+        </span>
+      <<else>>
+        <span id="credit-tbar" class="credit-count negative-credits">
+          $$<span id="credvar">$credits</span>
+        </span>
+      <</if>>
     </div>
   </div>
 </div>

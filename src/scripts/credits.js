@@ -46,6 +46,10 @@ window.removeCredits = function(credits, oncomplete = function(){}) {
   if (!countUp.error) {
     countUp.start(function () {
       cred_elem.innerHTML = new_credits;
+      if (new_credits < 1) {
+        cred_cont_elem.classList.add("negative-credits");
+      }
+
       cred_cont_elem.classList.remove("quest-failure");
       oncomplete();
     });

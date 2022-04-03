@@ -27,6 +27,15 @@ Game User Experience Manager Simulator
   <<set $curgame to window.newGame() >> \
 <</if>> \
 
+/* TESTING CREDITS  */
+/* Give me starting credits if we start somewhere later which */
+/* never happens to end users */
+<<script>>
+  if (Config.passages.start != "Start") {
+    State.variables.credits = 10;
+  }
+<</script>>
+
 :: Widgets [widget nobr]
 <<widget "confsound">>
   <<audio "confirmation" volume 0.8 play>>
