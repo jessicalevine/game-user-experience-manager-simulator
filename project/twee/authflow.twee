@@ -18,7 +18,7 @@
 <</type>>
 <<on "keydown">><<focusbox "password">><</on>>
 
-:: Login Success [tbar bbar]
+:: Login Success [tbar]
 <<confsound>>\
 <div class="terminal">\
 <<script>>
