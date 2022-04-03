@@ -8,6 +8,10 @@ window.add_credits = function(credits) {
   }, 165);
 
   let new_credits = State.variables.credits + credits;
+  let cred_cont_elem = document.getElementById("credit-tbar");
+  if (new_credits > 1) {
+    cred_cont_elem.classList.remove("negative-credits");
+  }
 
   const countUp = new window.CountUp(
     'credvar',

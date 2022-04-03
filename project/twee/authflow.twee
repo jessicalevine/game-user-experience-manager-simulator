@@ -1,6 +1,6 @@
 :: Login
 <<confsound>>\
-<<type 25ms>>
+<<type $longtypespeed>>
   WELCOME GAME USER EXPERIENCE MANAGER.
   VERIFY YOUR MANAGMENT LEVEL BY
   ENTERING YOUR CREDENTIALS NOW.
@@ -12,7 +12,7 @@
 
 :: Password
 <<confsound>>\
-<<type 25ms>>
+<<type $longtypespeed>>
   PASSWORD: \
   <<textbox "$password" "■" "Login Success">>
 <</type>>
@@ -28,33 +28,43 @@
     }
   });
 <</script>> \
-<<type 15ms>>
+<<type $shorttypespeed>>
   WELCOME USER #$userid. AS A GENEROUS REWARD
   FOR CLOCKING IN FOR THE FIRST TIME TODAY,
   YOU HAVE BEEN GRANTED A BONUS OF $$20 CREDITS.
-<</type>><<type 15ms start 3500ms>>
+<</type>><<type $shorttypespeed start 3500ms>>
   THIS WILL PROVIDE YOU THE INITIAL CREDITS
   NECCESSARY TO RENT SERVER TIME FOR YOUR
   FIRST GAME USER EXPERIENCE MANAGEMENT TASK.
-<</type>><<type 15ms start 525ms>>
+<</type>><<type $shorttypespeed start 525ms>>
   FROM THERE, IT WILL BE YOUR RESPONSIBILITY,
   AS SPECIFIED IN YOUR EMPLOYMENT CONTRACT, TO
   EARN ENOUGH CREDITS TO CONTINUE PERFORMING TASKS.
 <</type>> \
  \
 <div id="inteam"></div>
-<<type 15ms start 525ms>> \
+<<type $shorttypespeed start 525ms>> \
   <<script>> document.getElementById("inteam").scrollIntoView(); <</script>> \
   REMEMBER, ONLY U CAN PUT THE I IN TEAM
 <</type>> \
  \
 <div id="contbox"></div>
-<<type 15ms start 525ms>> \
+<<type $shorttypespeed start 525ms>> \
   <<script>> document.getElementById("contbox").scrollIntoView(); <</script>> \
-  CONTINUE: <<textbox "$cont" "■" "User Screen">>
+  CONTINUE: <<textbox "$cont" "■" "Login Threat">>
 <</type>>\
 </div>\
 
 /* IMPORTANT WHITESPACE TO FORCE SCROLL */
 
-<<on "keydown">><<focusbox "cont">><</on>>\
+<<on "keydown">><<focusbox "cont">><</on>> \
+
+:: Login Threat [tbar]
+<<confsound>>\
+<div class="terminal">\
+  OH, AND DO NOT MISUSE THE INTERFACE. INCORRECT ENTRIES WILL BE PENALIZED. DO NOT WASTE SERVER TIME.
+
+  CONTINUE: <<textbox "$cont" "■" "User List">>
+</div>
+
+<<on "keydown">><<focusbox "cont">><</on>> \
