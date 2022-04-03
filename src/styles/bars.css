@@ -53,9 +53,11 @@
 
 .bbcenter {
   margin-right: 1em;
+  flex-grow: 1;
 }
 
 .bbright {
+  text-align: right;
 }
 
 #ui-bar.stowed~#story .bbblock {

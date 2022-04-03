@@ -23,7 +23,7 @@ window.generateActiveGames = function(count = 1) {
 
 window.newGame = function() {
   let game = {
-    user: getRandomInt(10000000, 99999999),
+    user: getRandomInt(100000, 999999),
     quest_name: "zorkalike",
     status: "ACTIVE",
     turn: 0

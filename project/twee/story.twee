@@ -9,7 +9,7 @@ Game User Experience Manager Simulator
 
 /* USERID */
 <<if $userid === undefined>>
-  <<set $userid to random(10000000, 99999999)>>
+  <<set $userid to random(100000, 999999)>>
 <</if>>
 
 /* CREDITS */
