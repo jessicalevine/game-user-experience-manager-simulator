@@ -17,6 +17,11 @@ Game User Experience Manager Simulator
   <<set $credits to 0>>
 <</if>>
 
+/* GAMES */
+<<if $games === undefined>> \
+  <<set $games to {} >> \
+<</if>> \
+
 /* QUEST */
 <<if $curgame === undefined>> \
   <<set $curgame to window.newGame() >> \

@@ -1,3 +1,12 @@
+window.selectUser = function(userId) {
+  let game = State.variables.games[userId];
+  if (game === undefined || game === null) {
+    console.error("No such game for user: " + userId);
+  } else {
+    State.variables.curgame = game;
+  }
+}
+
 window.focusbox = function(boxvar) {
   var v = document.getElementById("textbox-" + boxvar).value;
 

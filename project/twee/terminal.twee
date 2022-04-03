@@ -1,27 +1,70 @@
-:: Main Terminal [tbar bbar]
-USER LIST
+:: User List [tbar]
+<<confsound>> \
+<<run window.genUserListGames()>> \
+<div class="terminal"> \
+<<type 30ms>>
+  SELECT A USER TO IMRPOVE THEIR GAME EXPERIENCE
+<</type>> \
+<<type 10ms>> \
+
+  <div class="games-row"> \
+    <div class="games-column games-header">USER NUMBER</div> \
+    <div class="games-column games-header">STATUS</div> \
+    <div class="games-column games-header">TURN</div> \
+  </div> \
+  <<set _game_user_ids to Object.keys($games)>> \
+  <<for _i to 0; _i lt _game_user_ids.length; _i++>> \
+    <div class="games-row"> \
+      <<set _game to $games[_game_user_ids[_i]]>>
+      <div class="games-column">USER #_game.user</div> \
+      <div class="games-column">_game.status</div> \
+      <div class="games-column">_game.turn</div> \
+    </div> \
+  <</for>> \
+
+<</type>> \
+<<type 30ms>> \
+  ENTER USER NUMBER: #<<textbox "$gameuser" "■" "User Screen">>
+<</type>> \
+</div>
+<<on "keydown">><<focusbox "gameuser">><</on>>
 
 :: User Screen [tbar bbar tasked]
 <<confsound>> \
+<<run selectUser($gameuser)>> \
 <svg id="fakemouse" viewBox="11.8 9 16 22"><path d="M20,21l4.5,8l-3.4,2l-4.6-8.1L12,29V9l16,12H20z" fill="white" stroke="white"></path></svg> \
 <div class="terminal"> \
-<<type 30ms>>
-  <<if $loc === undefined>> \
+  <<if !($gameuser === undefined)>> \
+    <<set $curgame to $games[$gameuser]>> \
+  <</if>> \
+  <<if $loc === undefined || $loc === null>> \
     <<set $loc to $curgame.quest()[$curgame.quest().start] >> \
   <</if>> \
+<<type 10ms>>
   $loc.text
 
-  <div class="button-container"> \
-    <<set $activebuttons to {}>> \
-    <<for _i to 0; _i lt $loc.adjacent.length; _i++>> \
-      <<set _adj to window.zorkalike[$loc.adjacent[_i]]>> \
-      <<set _visualnum to _i + 1>> \
-      <<set _buttonid to "reserved-" + _visualnum>> \
-      /* activebuttons is hash of DOM ID => Adjacent Map Tile */ \
-      <<set $activebuttons[_buttonid] = _adj>> \
-      <div class="fake-button" @id=_buttonid>_visualnum: _adj.name</div> \
-    <</for>> \
-  </div>
+  <<if $loc.fail>> \
+    <div class="quest-failure"><<print $curgame.quest().failtext>></div>
+    <<set $curgame.status to "FAILED">> \
+    <div class="button-container"> \
+      <<set $activebuttons to {}>> \
+      <<set _buttonid to "reserved-1">> \
+      <<set $activebuttons[_buttonid] to null>> \
+      <div class="fake-button" @id=_buttonid>1: CONTINUE</div> \
+    </div>
+  <<else>> \
+    <div class="button-container"> \
+      <<set $activebuttons to {}>> \
+      <<for _i to 0; _i lt $loc.adjacent.length; _i++>> \
+        <<set _adj to window.zorkalike[$loc.adjacent[_i]]>> \
+        <<set _visualnum to _i + 1>> \
+        <<set _buttonid to "reserved-" + _visualnum>> \
+        /* activebuttons is hash of DOM ID => Adjacent Map Tile */ \
+        <<set $activebuttons[_buttonid] = _adj>> \
+        <div class="fake-button" @id=_buttonid>_visualnum: _adj.name</div> \
+      <</for>> \
+    </div> \
+  <</if>> \
 <</type>>
 </div>
 
@@ -32,9 +75,17 @@ USER LIST
 
     /* Move cursor and "click" when done */
     window.moveFakeMouseToRandElement(buttonids, function(clicked_elem_id) {
-        State.variables.curgame.turns++;
+        let curgame = State.variables.curgame;
+        curgame.turn++;
         State.variables.loc = State.variables.activebuttons[clicked_elem_id];
-        Engine.play("User Screen");
+        if(curgame.status === "ACTIVE") {
+          Engine.play("User Screen");
+
+        } else if(curgame.status === "FAILED") {
+          window.removeCredits(10, function() {
+              Engine.play("User List");
+          });
+        }
     });
   });
 <</script>>

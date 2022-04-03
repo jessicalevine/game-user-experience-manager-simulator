@@ -23,3 +23,33 @@ window.add_credits = function(credits) {
     console.error(countUp.error);
   }
 }
+
+window.removeCredits = function(credits, oncomplete = function(){}) {
+  let cred_cont_elem = document.getElementById("credit-tbar");
+  let cred_elem = document.getElementById("credvar");
+  cred_cont_elem.classList.add("quest-failure");
+
+  let new_credits = State.variables.credits - credits;
+
+  let audio = new Audio('./assets/creditloss.wav');
+  audio.volume = 0.8;
+  audio.play();
+
+  const countUp = new window.CountUp(
+    'credvar',
+    new_credits,
+    { startVal: State.variables.credits }
+  );
+
+  State.variables.credits = new_credits;
+
+  if (!countUp.error) {
+    countUp.start(function () {
+      cred_elem.innerHTML = new_credits;
+      cred_cont_elem.classList.remove("quest-failure");
+      oncomplete();
+    });
+  } else {
+    console.error(countUp.error);
+  }
+}

@@ -16,3 +16,21 @@ svg {
   border: 2px solid #9EFFFF;
   box-shadow: 0 0 4px 3px #00FFFF;
 }
+
+.games-row {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.games-header {
+}
+
+.games-column {
+  flex: 1 1 0px;
+}
+
+.quest-failure {
+  color: #FF0000;
+  text-shadow: 0px 0px 36px #FF0000;
+}
