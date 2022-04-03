@@ -43,3 +43,7 @@
   color: #FFFD82;
   text-shadow: 0px 0px 28px #FFFF00;
 }
+
+input {
+  text-transform: uppercase;
+}

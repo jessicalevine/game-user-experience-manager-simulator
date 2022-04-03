@@ -39,7 +39,7 @@ $(document).one(":passagedisplay", function (event) {
   <div class="bbblock">
     <div class="bbtext">
       COMMAND:
-      <<textbox "$command" "■">>
+      <<textboxPlus "" "$command" `{ placeholder: "■", onreturn: "<<run window.guemCommand($command)>>" }`>>
     </div>
   </div>
 </div>

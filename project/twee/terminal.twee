@@ -16,9 +16,11 @@ USER LIST
     <<set $activebuttons to {}>> \
     <<for _i to 0; _i lt $loc.adjacent.length; _i++>> \
       <<set _adj to window.zorkalike[$loc.adjacent[_i]]>> \
-      <<set _buttonid to makeAdjacencyButtonId(_adj.name)>> \
+      <<set _visualnum to _i + 1>> \
+      <<set _buttonid to "reserved-" + _visualnum>> \
+      /* activebuttons is hash of DOM ID => Adjacent Map Tile */ \
       <<set $activebuttons[_buttonid] = _adj>> \
-      <div class="fake-button" @id=_buttonid>_adj.name</div> \
+      <div class="fake-button" @id=_buttonid>_visualnum: _adj.name</div> \
     <</for>> \
   </div>
 <</type>>
@@ -28,14 +30,12 @@ USER LIST
   $(document).on(':typingcomplete', function (ev) {
     /* Choose random button ID to "mouse" over */
     let buttonids = Object.keys(State.variables.activebuttons);
-    let buttonid = buttonids[Math.floor(Math.random()*buttonids.length)];
-
-    /* Set new loc to selected map tile */
-    State.variables.loc = State.variables.activebuttons[buttonid];
 
     /* Move cursor and "click" when done */
-    window.moveFakeMouseToElement(buttonid, function() {
+    window.moveFakeMouseToRandElement(buttonids, function(clicked_elem_id) {
+        State.variables.loc = State.variables.activebuttons[clicked_elem_id];
         Engine.play("User Screen");
     });
   });
 <</script>>
+<<on "keydown">><<focusbox "command">><</on>>\
