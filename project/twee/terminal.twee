@@ -73,7 +73,11 @@
 <</type>><<type $shorttypespeed start 525ms>>
   IT IS YOUR JOB TO GUIDE THE USER TOWARDS THE BEST POSSIBLE GAME EXPERIENCE. THIS IS BEST ACCOMPLISHED USING OUR PROPRIETY GAME USER EXPERIENCE IMPROVEMENT COMMANDS.
 <</type>><<type $shorttypespeed start 525ms>>
-  FOR EXAMPLE, IN THE FOLLOWING GAME, YOU MAY USE THE COMMAND "DELETE" FOLLOWED BY THE NUMBER OF AN ON SCREEN ELEMENT (SUCH AS "DELETE 1") TO REMOVE THAT CHOICE FROM THE USER.
+REMEMBER: THE COST OF SERVER TIME IS YOUR RESPONSIBILITY AS AN INDEPENDENT CONTRACTOR.
+<div id="cmdexample"></div> \
+<</type>><<type $shorttypespeed start 525ms>>
+  <<script>> document.getElementById("cmdexample").scrollIntoView(); <</script>> \
+  FOR USER #$gameuser'S GAME, YOU MAY USE THE COMMAND "DELETE" FOLLOWED BY THE NUMBER OF AN ON SCREEN ELEMENT (SUCH AS "DELETE 1") TO REMOVE THAT CHOICE FROM THE USER.
 <</type>> \
  \
 <div id="simplify"></div>
@@ -88,6 +92,8 @@
   CONTINUE: <<textbox "$cont" "■" "User Screen">>
 <</type>>\
 </div>
+
+/* IMPORTANT WHITESPACE TO FORCE SCROLL */
 
 <<on "keydown">><<focusbox "cont">><</on>> \
 
