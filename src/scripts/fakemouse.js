@@ -1,6 +1,5 @@
 function easeOutQuad(t) { return t*(2-t) };
 
-
 window.moveFakeMouseToElement = function (elem_id, oncomplete) {
   let fake_mouse = document.getElementById("fakemouse");
   let fake_mouse_rect = fake_mouse.getBoundingClientRect();
@@ -18,21 +17,22 @@ window.moveFakeMouseToElement = function (elem_id, oncomplete) {
 
   let dist = {
     total_x: target_loc.x - origin_loc.x,
-    total_y: target_loc.y - origin_loc.y,
-    total_iterations: 100,
-    current_iteration: 1
+    total_y: target_loc.y - origin_loc.y
   };
 
+  let duration = 2500; // milliseconds
+  let startTime = performance.now();
+
   let render = function(timestamp) {
-    let percent_reached = easeOutQuad(dist.current_iteration / dist.total_iterations);
+    let elapsed = timestamp - startTime;
+    let percent_reached = easeOutQuad(elapsed / duration);
     let new_loc = {}
     new_loc.x = origin_loc.x + percent_reached * dist.total_x;
     new_loc.y = origin_loc.y + percent_reached * dist.total_y;
 
     fake_mouse.style.transform = `translate(${new_loc.x}px, ${new_loc.y}px)`;
-    dist.current_iteration++;
 
-    if (dist.current_iteration >= dist.total_iterations) {
+    if (elapsed >= duration) {
       if (oncomplete) {
         oncomplete();
       }
