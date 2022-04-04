@@ -39,6 +39,15 @@ window.guemCommand = function(cmd_str) {
       return;
     }
 
+    if(window.getActiveFakeButtonIds().length < 2) {
+      State.variables.toast = {
+        text: "< YOUR GAME USER EXPERIENCE MANAGER MANAGER HAS PREVENTED YOU FROM LOCKING YOURSELF HERE FOREVER. REMEMBER: THEIR PAYCHECK DEPENDS ON YOU. >",
+        ontype: function (ev) { }
+      };
+      Engine.play("User Screen");
+      return;
+    }
+
     target.remove();
 
     let audio = new Audio('./assets/deletecmd.wav');
