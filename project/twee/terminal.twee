@@ -1,8 +1,8 @@
 :: User List [tbar]
 <<confsound>> \
-<<toast>> \
 <<run window.genUserListGames()>> \
 <div class="terminal"> \
+<<toast>> \
 <<type $longtypespeed>>
   SELECT A USER TO IMRPOVE THEIR GAME EXPERIENCE
 <</type>> \
@@ -101,23 +101,32 @@ REMEMBER: THE COST OF SERVER TIME IS YOUR RESPONSIBILITY AS AN INDEPENDENT CONTR
 <<confsound>> \
 <svg id="fakemouse" viewBox="11.8 9 16 22"><path d="M20,21l4.5,8l-3.4,2l-4.6-8.1L12,29V9l16,12H20z" fill="white" stroke="white"></path></svg> \
 <div class="terminal"> \
+<<toast>>\
   <<if !($gameuser === undefined)>> \
     <<set $curgame to $games[$gameuser]>> \
   <</if>> \
   <<if $curgame.loc === undefined || $curgame.loc === null>> \
-    <<run console.log("Going to start loc")>>
     <<set $curgame.loc to $curgame.quest[$curgame.quest.start] >> \
   <</if>> \
 <<type 10ms>>
-  <<= window.getTextForLoc($curgame.loc)>>
+  <<if window.didUserFail($curgame)>> \
+    <<= window.getTextForLoc($curgame.loc)>>
 
-  <<if $curgame.loc.fail>> \
     <div class="quest-failure"><<print $curgame.quest.failtext>></div>
     <<set $curgame.status to "FAILED">> \
     <div class="button-container"> \
       <div class="fake-button" id="reserved-1">1: CONTINUE</div> \
     </div>
+  <<elseif window.didUserWin($curgame)>> \
+    <<set $curgame.status to "SUCCESS">> \
+    $curgame.loc.wintext
+
+    <div class="button-container"> \
+      <div class="fake-button" id="reserved-1">1: CONTINUE</div> \
+    </div>
   <<else>> \
+    <<= window.getTextForLoc($curgame.loc)>>
+
     <div class="button-container"> \
       <<set _buttons to window.buttonsForGameLoc($curgame.loc)>> \
       <<for _i to 0; _i lt _buttons.length; _i++>> \
@@ -138,8 +147,12 @@ REMEMBER: THE COST OF SERVER TIME IS YOUR RESPONSIBILITY AS AN INDEPENDENT CONTR
       return;
     }
 
+    if(State.variables.curgame.status === "SUCCESS") {
+      window.add_credits(15);
+    }
+
     if(State.variables.curgame.status === "FAILED") {
-      window.removeCredits(10);
+      window.removeCredits(20);
     }
 
     /* Choose random button ID to "mouse" over */
@@ -154,17 +167,25 @@ REMEMBER: THE COST OF SERVER TIME IS YOUR RESPONSIBILITY AS AN INDEPENDENT CONTR
         } else if (clicked_elem.dataset.actionType === "pickup") {
           /* Stays in same loc */
           let item_key = clicked_elem.dataset.leveldataKey;
+          let item = State.variables.curgame.loc.items[item_key];
+
+          State.variables.curgame.inventory.push(item);
           delete State.variables.curgame.loc.items[item_key];
-          State.variables.curgame.inventory.push(State.variables.curgame.loc.items[item_key]);
+
+          State.variables.toast = {
+            text: "SUCCESSFULLY ACQUIRED " + item.display_name,
+            ontype: function (ev) {  }
+          };
         } else {
           console.error("Unrecognized action type");
         }
 
-        if (State.variables.curgame.status === "ACTIVE") {
+        let status = State.variables.curgame.status;
+        if (status === "ACTIVE") {
           Engine.play("User Screen");
 
-        } else if(State.variables.curgame.status === "FAILED") {
-          State.variables.curgame == null;
+        } else if(status === "FAILED" || status === "SUCCESS") {
+          State.variables.curgame = null;
           Engine.play("User List");
         }
     });

@@ -66,8 +66,11 @@
   text-align: right;
 }
 
-#commandbox {
+.bbar-line {
   flex: 1 0 100%;
+}
+
+#commandbox {
 }
 
 #ui-bar.stowed~#story .bbblock {

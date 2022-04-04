@@ -27,6 +27,7 @@ window.newGame = function() {
     quest: window.zorkalike(),
     status: "ACTIVE",
     turn: getRandomInt(0, 5),
+    // inventory: [window.zorkalike()["L"].items.sword]
     inventory: []
   }
 
@@ -82,4 +83,49 @@ window.getTextForLoc = function(loc) {
     text = text + " " + items[key].desc;
   });
   return text;
+}
+
+window.didUserFail = function(curgame) {
+  let fail = curgame.loc.fail;
+  if (fail === undefined || fail === null) {
+    return false;
+  }
+
+  if (fail.cond === "always") {
+    return true;
+  } else if (fail.cond === "without") {
+    console.log("in cond check");
+    console.log(curgame.inventory);
+    console.log(fail.arg)
+
+    let without_item = true;
+    curgame.inventory.forEach(function(item) {
+      if (item.inv_key === fail.arg) {
+        console.log(item.inv_key === fail.arg)
+        without_item = false;
+      }
+    });
+    
+    console.log("has")
+    return without_item;
+  }
+
+  console.error("Unrecognized fail cond");
+  return false;
+}
+
+window.didUserWin = function(curgame) {
+  let win = curgame.loc.win;
+  if (win === undefined || win === null) {
+    return false;
+  }
+
+  return win;
+}
+window.getInventoryString = function() {
+  let str = "";
+  State.variables.curgame.inventory.forEach(function(item) {
+    str = "< " + item.display_name + " >";
+  });
+  return str;
 }
