@@ -57,7 +57,7 @@
 <<confsound>>\
 <div class="terminal">\
   <<type $longtypespeed>>
-    OH, AND DO NOT MISUSE THE INTERFACE. INCORRECT ENTRIES WILL BE PENALIZED. DO NOT WASTE SERVER TIME.
+    WARNING: DO NOT MISUSE THE INTERFACE. INCORRECT ENTRIES WILL BE PENALIZED. DO NOT WASTE SERVER TIME.
 
     CONTINUE: <<textbox "$cont" "■" "User List">>
   <</type>>
