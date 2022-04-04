@@ -38,6 +38,13 @@
     if (gameuser === undefined || gameuser === null) {
       console.log("returning to list: lack of gameuser");
       Engine.play("User List");
+    } else if (`${gameuser}` === `${State.variables.userid}`) {
+      State.variables.toast = {
+        text: "YOU DO NOT HAVE PERMISSION TO ACCESS THIS GAME.",
+        ontype: function (ev) { window.removeCredits(5); }
+      };
+      Engine.play("User List");
+      return;
     }
 
     let game = window.updateGameByUser(gameuser);
@@ -51,6 +58,12 @@
       State.variables.toast = {
         text: "THAT IS A FAILED GAME. TRY AGAIN.",
         ontype: function (ev) { window.removeCredits(1); }
+      };
+      Engine.play("User List");
+    } else if (game.status === "SUCCESS") {
+      State.variables.toast = {
+        text: "DO NOT ATTEMPT TO CHEAT YOUR EMPLOYER.",
+        ontype: function (ev) { window.removeCredits(20); }
       };
       Engine.play("User List");
     } else {

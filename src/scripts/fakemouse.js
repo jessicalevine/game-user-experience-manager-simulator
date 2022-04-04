@@ -37,10 +37,10 @@ function setupTween(fake_mouse, elem) {
   tween.dist_y = tween.target_y - tween.origin_y;
 
   let distance = Math.sqrt(Math.pow(tween.dist_x, 2) + Math.pow(tween.dist_y, 2));
-  if (distance < 200) {
-    tween.duration = 1000;
+  if (distance < 250) {
+    tween.duration = 1500;
   } else {
-    tween.duration = 4000;
+    tween.duration = 4500;
   }
   tween.startTime = performance.now();
 
