@@ -78,3 +78,18 @@ GAME USER EXPERIENCE MANAGER
 @@.subtitle;
 [[PRESS TO BOOT|Login]]
 @@
+
+:: Start Cover Photo [tbar bbar]
+<div class="terminal">
+@@.subtitle;
+GAME USER EXPERIENCE MANAGER
+@@ 
+@@.power-button;
+<a data-passage="Login"> \
+<html><i class="fa solid fa-power-off" aria-hidden="true"></i></html> \
+</a> \
+@@ \
+@@.subtitle;
+BY JESS LEVINE
+@@
+</div>
