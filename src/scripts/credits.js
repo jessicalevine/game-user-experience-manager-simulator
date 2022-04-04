@@ -33,6 +33,7 @@ window.removeCredits = function(credits, oncomplete = function(){}) {
   let cred_elem = document.getElementById("credvar");
   cred_cont_elem.classList.add("quest-failure");
 
+  let old_credits = State.variables.credits;
   let new_credits = State.variables.credits - credits;
 
   let audio = new Audio('./assets/creditloss.wav');
@@ -51,6 +52,12 @@ window.removeCredits = function(credits, oncomplete = function(){}) {
     countUp.start(function () {
       cred_elem.innerHTML = new_credits;
       if (new_credits < 1) {
+        if (old_credits > 0) {
+          State.variables.toast = {
+            text: "< YOU NO LONGER HAVE ENOUGH CREDITS TO PAY FOR SERVER TIME. LUCKILY, WE WILL GENEROUSLY OFFER YOU A LOAN, WHICH YOU MAY PAY BACK WITH INTEREST AT A LATER DATE. CONTINUE WORKING.>",
+            ontype: function (ev) { }
+          };
+        }
         cred_cont_elem.classList.add("negative-credits");
       }
 
